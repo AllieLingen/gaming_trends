@@ -2,17 +2,21 @@ SELECT *
 FROM stream, chat
 LIMIT 20;
 
+-- Return unique games in the stream table
 SELECT DISTINCT game
 FROM stream;
 
+-- Return unqiue channels
 SELECT DISTINCT channel
 FROM stream;
 
+-- Return the list of most popular games on the platform
 SELECT game, COUNT(*)
 FROM stream
 GROUP BY game
 ORDER BY COUNT(*) DESC;
 
+-- Create a list of countries and their number of LoL viewers
 SELECT country, COUNT(*)
 FROM stream
 WHERE game = 'League of Legends'
@@ -20,11 +24,14 @@ GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 10;
 
+-- Create a list of players and their number of streamers
 SELECT player, COUNT(*)
 FROM stream
 GROUP BY 1
 ORDER BY 2 DESC;
 
+-- Create a new column for game genre
+-- Group By games, Order By Count in DESC
 SELECT game,
  CASE
   WHEN game = 'Dota 2'
@@ -46,22 +53,26 @@ FROM stream
 GROUP BY 1
 ORDER BY 3 DESC;
 
+-- Return 10 records of time to see the format
 SELECT time
 FROM stream
 LIMIT 10;
 
+-- Return the seconds from the time column
 SELECT time,
    strftime('%S', time)
 FROM stream
 GROUP BY 1
 LIMIT 20;
 
+-- Return the hours from the time column for users in U.S.
 SELECT strftime('%H', time),
   COUNT(*)
 FROM stream
 WHERE country = 'US'
 GROUP BY 1;
 
+-- Join the chat and stream tables
 SELECT *
 FROM stream
 JOIN chat
