@@ -7,3 +7,5 @@ Open the 'queries.sqlite' file to see my queries for exploring and analyzing som
 
 # Python Visualizations
 Open the 'visualizations.py' file to see my Python code for building three different charts with the Twitch data. The 'twitch_trends.pdf' will display the visualizations that my code produces
+
+![](TwitchGameInsights.png)
